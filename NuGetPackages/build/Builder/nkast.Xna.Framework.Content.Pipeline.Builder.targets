@@ -136,8 +136,18 @@
   <Target Name="RunContentBuilder" DependsOnTargets="PrepareContentBuilder">
   
     <PropertyGroup>
-      <KniContentBuilderExe Condition="'$(KniContentBuilderExe)' == ''">$(MSBuildThisFileDirectory)..\Tools\MGCB.exe</KniContentBuilderExe>
-      <KniContentBuilderCmd>&quot;$(KniContentBuilderExe)&quot;</KniContentBuilderCmd>
+      <!-- Detect the operating system -->
+      <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
+      <IsWindows Condition="'$(OS)' != 'Windows_NT'">false</IsWindows>
+      
+      <!-- Set MGCB path based on OS -->
+      <KniContentBuilderExe Condition="'$(KniContentBuilderExe)' == '' AND '$(IsWindows)' == 'true'">$(MSBuildThisFileDirectory)..\Tools\MGCB.exe</KniContentBuilderExe>
+      <KniContentBuilderExe Condition="'$(KniContentBuilderExe)' == '' AND '$(IsWindows)' == 'false'">$(MSBuildThisFileDirectory)..\Tools\MGCB</KniContentBuilderExe>
+      
+      <!-- Build the command based on OS and executable existence -->
+      <KniContentBuilderCmd Condition="'$(IsWindows)' == 'true'">&quot;$(KniContentBuilderExe)&quot;</KniContentBuilderCmd>
+      <KniContentBuilderCmd Condition="'$(IsWindows)' == 'false' AND Exists('$(KniContentBuilderExe)')">&quot;$(KniContentBuilderExe)&quot;</KniContentBuilderCmd>
+      <KniContentBuilderCmd Condition="'$(IsWindows)' == 'false' AND !Exists('$(KniContentBuilderExe)')">dotnet &quot;$(MSBuildThisFileDirectory)..\Tools\MGCB.dll&quot;</KniContentBuilderCmd>
     </PropertyGroup>
     
     <!-- Execute MGCB from the project directory so we use the correct manifest. -->

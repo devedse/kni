@@ -11,8 +11,8 @@
     <projectUrl>https://github.com/kniEngine/kni</projectUrl>
     <!--<Icon>Images\Icon.png</Icon>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>KNI Framework Content Pipeline Builder</description>
-    <summary>MSBuild task to build content for KNI.</summary>
+    <description>KNI Framework Content Pipeline Builder (cross-platform)</description>
+    <summary>MSBuild task to build content for KNI on Windows, Linux, and macOS.</summary>
     <copyright>©2024 Kastellanos Nikos</copyright>
     <language>en-US</language>
     
@@ -20,8 +20,8 @@
   <files>
     <file src="NuGetPackages\build\Builder\nkast.Xna.Framework.Content.Pipeline.Builder.targets" target="build\nkast.Xna.Framework.Content.Pipeline.Builder.targets" />
 
-    <!-- tools -->
-    <file src="Tools\MonoGame.Content.Builder\bin\Windows\AnyCPU\Release\net8.0\*.exe" target="tools" />
+    <!-- tools - cross-platform (net8.0) -->
+    <file src="Tools\MonoGame.Content.Builder\bin\Windows\AnyCPU\Release\net8.0\MGCB" target="tools" />
     <file src="Tools\MonoGame.Content.Builder\bin\Windows\AnyCPU\Release\net8.0\*.runtimeconfig.json" target="tools" />
     <file src="Tools\MonoGame.Content.Builder\bin\Windows\AnyCPU\Release\net8.0\*.dll" target="tools" />
     <file src="Tools\MonoGame.Content.Builder\bin\Windows\AnyCPU\Release\net8.0\*.dll.config" target="tools" />
