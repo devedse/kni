@@ -20,9 +20,10 @@
   <files>
     <file src="NuGetPackages\build\Builder\nkast.Xna.Framework.Content.Pipeline.Builder.targets" target="build\nkast.Xna.Framework.Content.Pipeline.Builder.targets" />
 
-    <!-- tools - cross-platform (net8.0) -->
-    <file src="Tools\MonoGame.Content.Builder\bin\Windows\AnyCPU\Release\net8.0\MGCB" target="tools" />
+    <!-- tools -->
+    <file src="Tools\MonoGame.Content.Builder\bin\Windows\AnyCPU\Release\net8.0\*.exe" target="tools" />
     <file src="Tools\MonoGame.Content.Builder\bin\Windows\AnyCPU\Release\net8.0\*.runtimeconfig.json" target="tools" />
+    <file src="Tools\MonoGame.Content.Builder\bin\Windows\AnyCPU\Release\net8.0\*.deps.json" target="tools" />
     <file src="Tools\MonoGame.Content.Builder\bin\Windows\AnyCPU\Release\net8.0\*.dll" target="tools" />
     <file src="Tools\MonoGame.Content.Builder\bin\Windows\AnyCPU\Release\net8.0\*.dll.config" target="tools" />
     
