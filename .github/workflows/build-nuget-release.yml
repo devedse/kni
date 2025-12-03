@@ -102,7 +102,7 @@ jobs:
       run: dotnet pack src/Xna.Framework.Content.Pipeline.Media/XNA.Framework.Content.Pipeline.Media.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
     
     - name: Build MGCB tool for Content.Pipeline.Builder packages
-      run: dotnet build Tools/MonoGame.Content.Builder/MGCB.csproj -c Release -f net8.0 /p:Platform=AnyCPU
+      run: dotnet build Tools/MonoGame.Content.Builder/MGCB.csproj -c Release -f net8.0 /p:Platform=AnyCPU --no-dependencies
     
     - name: Pack Kni.Platform.Android.GL
       run: dotnet pack Platforms/Kni.Platform.Android.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
