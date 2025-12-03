@@ -159,33 +159,33 @@ jobs:
         path: NuGetPackages/Output/*.nupkg
         retention-days: 90
   
-  release:
-    needs: [build-linux, build-macos]
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+#   release:
+#     needs: [build-linux, build-macos]
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: write
     
-    steps:
-    - name: Download Linux NuGet packages
-      uses: actions/download-artifact@v4
-      with:
-        name: nuget-packages-linux
-        path: packages
+#     steps:
+#     - name: Download Linux NuGet packages
+#       uses: actions/download-artifact@v4
+#       with:
+#         name: nuget-packages-linux
+#         path: packages
     
-    - name: Download macOS NuGet packages
-      uses: actions/download-artifact@v4
-      with:
-        name: nuget-packages-macos
-        path: packages
+#     - name: Download macOS NuGet packages
+#       uses: actions/download-artifact@v4
+#       with:
+#         name: nuget-packages-macos
+#         path: packages
     
-    - name: Create GitHub Release
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: ${{ inputs.version }}
-        name: Release ${{ inputs.version }}
-        draft: false
-        prerelease: ${{ inputs.prerelease }}
-        files: packages/*.nupkg
-        generate_release_notes: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#     - name: Create GitHub Release
+#       uses: softprops/action-gh-release@v1
+#       with:
+#         tag_name: ${{ inputs.version }}
+#         name: Release ${{ inputs.version }}
+#         draft: false
+#         prerelease: ${{ inputs.prerelease }}
+#         files: packages/*.nupkg
+#         generate_release_notes: true
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
