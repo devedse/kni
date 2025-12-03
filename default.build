@@ -23,7 +23,7 @@
     <exec program="dotnet" commandline="build src\Xna.Framework.Content\Xna.Framework.Content.csproj /t:Clean /p:Configuration=Release" />
     <exec program="dotnet" commandline="build src\Xna.Framework.Graphics\Xna.Framework.Graphics.csproj /t:Clean /p:Configuration=Release" />
     <exec program="dotnet" commandline="build src\Xna.Framework.Audio\Xna.Framework.Audio.csproj /t:Clean /p:Configuration=Release" />
-    <exec program="dotnet" commandline="build src\Xna.Framework.Media\Xna.Framework.Media.csproj /t:Clean /p:Configuration=Release" />
+    <exec program="dotnet" commandline="build src\Xna.Framework.Media\XNA.Framework.Media.csproj /t:Clean /p:Configuration=Release" />
     <exec program="dotnet" commandline="build src\Xna.Framework.Devices\Xna.Framework.Devices.csproj /t:Clean /p:Configuration=Release" />
     <exec program="dotnet" commandline="build src\Xna.Framework.Game\Xna.Framework.Game.csproj /t:Clean /p:Configuration=Release" />
     <exec program="dotnet" commandline="build src\Xna.Framework.Input\Xna.Framework.Input.csproj /t:Clean /p:Configuration=Release" />
@@ -73,10 +73,10 @@
     <exec program="dotnet" commandline="pack src\Xna.Framework.Design\Xna.Framework.Design.csproj --output ${project::get-base-directory()}\Artifacts\Packages\ /t:Build /p:Configuration=Release" />
     <exec program="dotnet" commandline="pack Platforms\Kni.Platform.Ref.csproj --output ${project::get-base-directory()}\Artifacts\Packages\ /t:Build /p:Configuration=Release" />
 
-    <exec program="dotnet" commandline="pack src\Xna.Framework.Content.Pipeline\Xna.Framework.Content.Pipeline.csproj --output ${project::get-base-directory()}\Artifacts\Packages\ /t:Build /p:Configuration=Release" />
-    <exec program="dotnet" commandline="pack src\Xna.Framework.Content.Pipeline.Audio\Xna.Framework.Content.Pipeline.Audio.csproj --output ${project::get-base-directory()}\Artifacts\Packages\ /t:Build /p:Configuration=Release" />
-    <exec program="dotnet" commandline="pack src\Xna.Framework.Content.Pipeline.Graphics\Xna.Framework.Content.Pipeline.Graphics.csproj --output ${project::get-base-directory()}\Artifacts\Packages\ /t:Build /p:Configuration=Release" />
-    <exec program="dotnet" commandline="pack src\Xna.Framework.Content.Pipeline.Media\Xna.Framework.Content.Pipeline.Media.csproj --output ${project::get-base-directory()}\Artifacts\Packages\ /t:Build /p:Configuration=Release" />
+    <exec program="dotnet" commandline="pack src\Xna.Framework.Content.Pipeline\XNA.Framework.Content.Pipeline.csproj --output ${project::get-base-directory()}\Artifacts\Packages\ /t:Build /p:Configuration=Release" />
+    <exec program="dotnet" commandline="pack src\Xna.Framework.Content.Pipeline.Audio\XNA.Framework.Content.Pipeline.Audio.csproj --output ${project::get-base-directory()}\Artifacts\Packages\ /t:Build /p:Configuration=Release" />
+    <exec program="dotnet" commandline="pack src\Xna.Framework.Content.Pipeline.Graphics\XNA.Framework.Content.Pipeline.Graphics.csproj --output ${project::get-base-directory()}\Artifacts\Packages\ /t:Build /p:Configuration=Release" />
+    <exec program="dotnet" commandline="pack src\Xna.Framework.Content.Pipeline.Media\XNA.Framework.Content.Pipeline.Media.csproj --output ${project::get-base-directory()}\Artifacts\Packages\ /t:Build /p:Configuration=Release" />
 
     <exec program="${nugetPath}" commandline="pack NuGetPackages/Content.Pipeline.Builder.nuspec	-OutputDirectory ${project::get-base-directory()}\Artifacts\Packages\          -BasePath .  -Version ${nugetPackageVersion}  -Properties Configuration=Release" />
     <exec program="${nugetPath}" commandline="pack NuGetPackages/Content.Pipeline.Builder.Windows.nuspec	-OutputDirectory ${project::get-base-directory()}\Artifacts\Packages\  -BasePath .  -Version ${nugetPackageVersion}  -Properties Configuration=Release" />
@@ -104,7 +104,7 @@
       <exec program="dotnet" commandline="build src\Xna.Framework.Content\Xna.Framework.Content.csproj /t:restore" />
       <exec program="dotnet" commandline="build src\Xna.Framework.Graphics\Xna.Framework.Graphics.csproj /t:restore" />
       <exec program="dotnet" commandline="build src\Xna.Framework.Audio\Xna.Framework.Audio.csproj /t:restore" />
-      <exec program="dotnet" commandline="build src\Xna.Framework.Media\Xna.Framework.Media.csproj /t:restore" />
+      <exec program="dotnet" commandline="build src\Xna.Framework.Media\XNA.Framework.Media.csproj /t:restore" />
       <exec program="dotnet" commandline="build src\Xna.Framework.Devices\Xna.Framework.Devices.csproj /t:restore" />
       <exec program="dotnet" commandline="build src\Xna.Framework.Game\Xna.Framework.Game.csproj /t:restore" />
       <exec program="dotnet" commandline="build src\Xna.Framework.Input\Xna.Framework.Input.csproj /t:restore" />
@@ -116,7 +116,7 @@
       <exec program="dotnet" commandline="build src\Xna.Framework.Content\Xna.Framework.Content.csproj /t:Build /p:Configuration=Release" />
       <exec program="dotnet" commandline="build src\Xna.Framework.Graphics\Xna.Framework.Graphics.csproj /t:Build /p:Configuration=Release" />
       <exec program="dotnet" commandline="build src\Xna.Framework.Audio\Xna.Framework.Audio.csproj /t:Build /p:Configuration=Release" />
-      <exec program="dotnet" commandline="build src\Xna.Framework.Media\Xna.Framework.Media.csproj /t:Build /p:Configuration=Release" />
+      <exec program="dotnet" commandline="build src\Xna.Framework.Media\XNA.Framework.Media.csproj /t:Build /p:Configuration=Release" />
       <exec program="dotnet" commandline="build src\Xna.Framework.Devices\Xna.Framework.Devices.csproj /t:Build /p:Configuration=Release" />
       <exec program="dotnet" commandline="build src\Xna.Framework.Game\Xna.Framework.Game.csproj /t:Build /p:Configuration=Release" />
       <exec program="dotnet" commandline="build src\Xna.Framework.Input\Xna.Framework.Input.csproj /t:Build /p:Configuration=Release" />

@@ -94,7 +94,7 @@
       <Name>Xna.Framework.Content.Pipeline</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Xna.Framework.Content.Pipeline.Graphics\Xna.Framework.Content.Pipeline.Graphics.csproj">
+    <ProjectReference Include="..\Xna.Framework.Content.Pipeline.Graphics\XNA.Framework.Content.Pipeline.Graphics.csproj">
       <Project>{7a3fa1d0-1b03-49cb-9e1b-b9dbf27d74b1}</Project>
       <Name>Xna.Framework.Content.Pipeline.Graphics</Name>
       <Private>False</Private>

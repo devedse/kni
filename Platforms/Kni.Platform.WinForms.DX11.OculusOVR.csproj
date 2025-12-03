@@ -39,7 +39,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <ProjectReference Include="..\src\XNA.Framework\XNA.Framework.csproj">
+    <ProjectReference Include="..\src\XNA.Framework\Xna.Framework.csproj">
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\src\Xna.Framework.Graphics\Xna.Framework.Graphics.csproj">
