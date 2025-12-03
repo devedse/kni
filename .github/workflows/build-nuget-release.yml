@@ -125,14 +125,22 @@ jobs:
     - name: Pack Kni.Platform.Cardboard.GL
       run: dotnet pack Platforms/Kni.Platform.Cardboard.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
     
+    # Windows-only packages - cannot build on Linux
+    # - name: Pack Kni.Platform.WinForms.DX11
+    #   run: dotnet pack Platforms/Kni.Platform.WinForms.DX11.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+    
+    # - name: Pack Kni.Platform.WinForms.DX11.OculusOVR
+    #   run: dotnet pack Platforms/Kni.Platform.WinForms.DX11.OculusOVR.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+    
     - name: Pack Content.Pipeline.Builder
-      run: nuget pack NuGetPackages/Content.Pipeline.Builder.nuspec -OutputDirectory NuGetPackages/Output/ -BasePath . -Version 4.2.9001 -Properties Configuration=Release
+      run: nuget pack NuGetPackages/Content.Pipeline.Builder.nuspec -OutputDirectory NuGetPackages/Output/ -BasePath . -Version ${{ inputs.version }} -Properties Configuration=Release
     
-    - name: Pack Content.Pipeline.Builder.Windows
-      run: nuget pack NuGetPackages/Content.Pipeline.Builder.Windows.nuspec -OutputDirectory NuGetPackages/Output/ -BasePath . -Version 4.2.9001 -Properties Configuration=Release
+    # Windows-only nuspec packages - require net8.0-windows and UWP builds
+    # - name: Pack Content.Pipeline.Builder.Windows
+    #   run: nuget pack NuGetPackages/Content.Pipeline.Builder.Windows.nuspec -OutputDirectory NuGetPackages/Output/ -BasePath . -Version ${{ inputs.version }} -Properties Configuration=Release
     
-    - name: Pack MonoGame.Framework.WindowsUniversal
-      run: nuget pack NuGetPackages/MonoGame.Framework.WindowsUniversal.nuspec -OutputDirectory NuGetPackages/Output/ -BasePath . -Version 4.2.9001 -Properties Configuration=Release
+    # - name: Pack MonoGame.Framework.WindowsUniversal
+    #   run: nuget pack NuGetPackages/MonoGame.Framework.WindowsUniversal.nuspec -OutputDirectory NuGetPackages/Output/ -BasePath . -Version ${{ inputs.version }} -Properties Configuration=Release
     
     - name: List generated packages
       run: ls -la NuGetPackages/Output/
