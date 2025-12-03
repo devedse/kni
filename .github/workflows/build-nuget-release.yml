@@ -29,10 +29,10 @@ jobs:
       with:
         dotnet-version: 8.0.x
     
-    - name: Install NuGet CLI
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y nuget
+    # - name: Install NuGet CLI
+    #   run: |
+    #     sudo apt-get update
+    #     sudo apt-get install -y nuget
     
     - name: Install workloads for Android
       run: dotnet workload install android
