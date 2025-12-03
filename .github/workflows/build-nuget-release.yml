@@ -40,6 +40,9 @@ jobs:
     - name: Install workloads for Blazor
       run: dotnet workload install wasm-tools
     
+    - name: Install Android SDK dependencies
+      run: dotnet build Platforms/Kni.Platform.Android.GL.csproj -t:InstallAndroidDependencies -f net8.0-android
+    
     - name: Create output directory
       run: mkdir -p NuGetPackages/Output
     
