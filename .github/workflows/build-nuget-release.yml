@@ -40,8 +40,14 @@ jobs:
     - name: Install workloads for Blazor
       run: dotnet workload install wasm-tools
     
-    - name: Install Android SDK dependencies
+    - name: Install Android SDK dependencies for Android.GL
       run: dotnet build Platforms/Kni.Platform.Android.GL.csproj -t:InstallAndroidDependencies -f net8.0-android -p:AcceptAndroidSDKLicenses=true
+    
+    - name: Install Android SDK dependencies for Oculus.GL
+      run: dotnet build Platforms/Kni.Platform.Oculus.GL.csproj -t:InstallAndroidDependencies -f net8.0-android -p:AcceptAndroidSDKLicenses=true
+    
+    - name: Install Android SDK dependencies for Cardboard.GL
+      run: dotnet build Platforms/Kni.Platform.Cardboard.GL.csproj -t:InstallAndroidDependencies -f net8.0-android -p:AcceptAndroidSDKLicenses=true
     
     - name: Create output directory
       run: mkdir -p NuGetPackages/Output
