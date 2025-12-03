@@ -1121,7 +1121,7 @@
       <Project>{e37f98d7-c4e8-4556-b322-aef99638ece1}</Project>
       <Name>Xna.Framework.Design</Name>
     </ProjectReference>
-    <ProjectReference Include="..\src\Xna.Framework.Content.Pipeline\Xna.Framework.Content.Pipeline.csproj">
+    <ProjectReference Include="..\src\Xna.Framework.Content.Pipeline\XNA.Framework.Content.Pipeline.csproj">
       <Project>{73509f44-3566-4b79-bb47-c7c6e2aa2351}</Project>
       <Name>Xna.Framework.Content.Pipeline</Name>
     </ProjectReference>

@@ -74,11 +74,11 @@
       <Name>Xna.Framework.Content.Pipeline</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Xna.Framework.Media\Xna.Framework.Media.csproj">
+    <ProjectReference Include="..\Xna.Framework.Media\XNA.Framework.Media.csproj">
       <Project>{6E0E6284-13FF-4DC7-8FC2-B6D756EAF1FD}</Project>
       <Name>Xna.Framework.Media</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Xna.Framework.Content.Pipeline.Audio\Xna.Framework.Content.Pipeline.Audio.csproj">
+    <ProjectReference Include="..\Xna.Framework.Content.Pipeline.Audio\XNA.Framework.Content.Pipeline.Audio.csproj">
       <Project>{acd26013-5730-4caf-9468-3baae867a8a2}</Project>
       <Name>Xna.Framework.Content.Pipeline.Audio</Name>
       <Private>False</Private>
