@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xna.Framework.Graphics", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xna.Framework.Audio", "src\Xna.Framework.Audio\Xna.Framework.Audio.csproj", "{3F81F76D-F0F3-44FE-A256-40AF153C33F7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xna.Framework.Media", "src\Xna.Framework.Media\Xna.Framework.Media.csproj", "{6E0E6284-13FF-4DC7-8FC2-B6D756EAF1FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xna.Framework.Media", "src\Xna.Framework.Media\XNA.Framework.Media.csproj", "{6E0E6284-13FF-4DC7-8FC2-B6D756EAF1FD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xna.Framework.Input", "src\Xna.Framework.Input\Xna.Framework.Input.csproj", "{8FB8B257-C091-4C41-B221-75C37B68CD8F}"
 EndProject
@@ -37,7 +37,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xna.Framework.XR", "src\Xna
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xna.Framework.Design", "src\Xna.Framework.Design\Xna.Framework.Design.csproj", "{E37F98D7-C4E8-4556-B322-AEF99638ECE1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xna.Framework.Content.Pipeline", "src\Xna.Framework.Content.Pipeline\Xna.Framework.Content.Pipeline.csproj", "{73509F44-3566-4B79-BB47-C7C6E2AA2351}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xna.Framework.Content.Pipeline", "src\Xna.Framework.Content.Pipeline\XNA.Framework.Content.Pipeline.csproj", "{73509F44-3566-4B79-BB47-C7C6E2AA2351}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xna.Framework.Content.Pipeline.Graphics", "src\Xna.Framework.Content.Pipeline.Graphics\Xna.Framework.Content.Pipeline.Graphics.csproj", "{7A3FA1D0-1B03-49CB-9E1B-B9DBF27D74B1}"
 EndProject
