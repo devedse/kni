@@ -56,7 +56,7 @@ jobs:
       run: dotnet pack src/Xna.Framework.Audio/Xna.Framework.Audio.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
     
     - name: Pack Xna.Framework.Media
-      run: dotnet pack src/Xna.Framework.Media/Xna.Framework.Media.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Media/XNA.Framework.Media.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
     
     - name: Pack Xna.Framework.Input
       run: dotnet pack src/Xna.Framework.Input/Xna.Framework.Input.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
@@ -77,16 +77,16 @@ jobs:
       run: dotnet pack src/Xna.Framework.Design/Xna.Framework.Design.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
     
     - name: Pack Xna.Framework.Content.Pipeline
-      run: dotnet pack src/Xna.Framework.Content.Pipeline/Xna.Framework.Content.Pipeline.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Content.Pipeline/XNA.Framework.Content.Pipeline.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
     
     - name: Pack Xna.Framework.Content.Pipeline.Audio
-      run: dotnet pack src/Xna.Framework.Content.Pipeline.Audio/Xna.Framework.Content.Pipeline.Audio.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Content.Pipeline.Audio/XNA.Framework.Content.Pipeline.Audio.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
     
     - name: Pack Xna.Framework.Content.Pipeline.Graphics
-      run: dotnet pack src/Xna.Framework.Content.Pipeline.Graphics/Xna.Framework.Content.Pipeline.Graphics.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Content.Pipeline.Graphics/XNA.Framework.Content.Pipeline.Graphics.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
     
     - name: Pack Xna.Framework.Content.Pipeline.Media
-      run: dotnet pack src/Xna.Framework.Content.Pipeline.Media/Xna.Framework.Content.Pipeline.Media.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Content.Pipeline.Media/XNA.Framework.Content.Pipeline.Media.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
     
     - name: Pack Kni.Platform.Android.GL
       run: dotnet pack Platforms/Kni.Platform.Android.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
