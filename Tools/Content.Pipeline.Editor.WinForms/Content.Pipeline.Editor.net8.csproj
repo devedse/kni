@@ -200,7 +200,7 @@
       <Project>{7a3fa1d0-1b03-49cb-9e1b-b9dbf27d74b1}</Project>
       <Name>Xna.Framework.Content.Pipeline.Graphics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Xna.Framework.Content.Pipeline.Graphics.MojoProcessor\Xna.Framework.Content.Pipeline.Graphics.MojoProcessor.csproj">
+    <ProjectReference Include="..\..\src\Xna.Framework.Content.Pipeline.Graphics.MojoProcessor\XNA.Framework.Content.Pipeline.Graphics.MojoProcessor.csproj">
       <Project>{476ee43e-e93b-4019-b8b7-ad52c4216456}</Project>
       <Name>Xna.Framework.Content.Pipeline.Graphics.MojoProcessor</Name>
     </ProjectReference>
