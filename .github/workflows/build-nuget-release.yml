@@ -47,7 +47,7 @@ jobs:
       run: dotnet build Platforms/Kni.Platform.Oculus.GL.csproj -t:InstallAndroidDependencies -f net8.0-android32.0 -p:AcceptAndroidSDKLicenses=true
     
     - name: Install Android SDK dependencies for Cardboard.GL
-      run: dotnet build Platforms/Kni.Platform.Cardboard.GL.csproj -t:InstallAndroidDependencies -f net8.0-android -p:AcceptAndroidSDKLicenses=true
+      run: dotnet build Platforms/Kni.Platform.Cardboard.GL.csproj -t:InstallAndroidDependencies -f net8.0-android30 -p:AcceptAndroidSDKLicenses=true
     
     - name: Create output directory
       run: mkdir -p NuGetPackages/Output
