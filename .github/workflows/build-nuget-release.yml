@@ -54,7 +54,7 @@ jobs:
       run: dotnet build Platforms/Kni.Platform.Cardboard.GL.csproj -t:InstallAndroidDependencies -f net8.0-android30 -p:AcceptAndroidSDKLicenses=true
     
     - name: Restore MGCB tool for net8.0 only
-      run: dotnet restore Tools/MonoGame.Content.Builder/MGCB.csproj -f net8.0 /p:Platform=AnyCPU
+      run: dotnet restore Tools/MonoGame.Content.Builder/MGCB.csproj /p:TargetFramework=net8.0 /p:Platform=AnyCPU
     
     - name: Build MGCB tool for Content.Pipeline.Builder packages
       run: dotnet build Tools/MonoGame.Content.Builder/MGCB.csproj -c Release -f net8.0 /p:Platform=AnyCPU --no-restore
