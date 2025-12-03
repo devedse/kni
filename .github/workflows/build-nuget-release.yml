@@ -14,7 +14,7 @@ on:
         default: false
 
 jobs:
-  build-and-release:
+  build-linux:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -36,9 +36,6 @@ jobs:
     
     - name: Install workloads for Android
       run: dotnet workload install android
-    
-    - name: Install workloads for iOS
-      run: dotnet workload install ios
     
     - name: Install workloads for Blazor
       run: dotnet workload install wasm-tools
@@ -94,9 +91,6 @@ jobs:
     - name: Pack Kni.Platform.Android.GL
       run: dotnet pack Platforms/Kni.Platform.Android.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
     
-    - name: Pack Kni.Platform.iOS.GL
-      run: dotnet pack Platforms/Kni.Platform.iOS.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
-    
     - name: Pack Kni.Platform.SDL2.GL
       run: dotnet pack Platforms/Kni.Platform.SDL2.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
     
@@ -127,31 +121,71 @@ jobs:
     - name: Upload NuGet packages as artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: nuget-packages
+        name: nuget-packages-linux
+        path: NuGetPackages/Output/*.nupkg
+        retention-days: 90
+
+  build-macos:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    
+    - name: Install workloads for iOS
+      run: dotnet workload install ios
+    
+    - name: Create output directory
+      run: mkdir -p NuGetPackages/Output
+    
+    - name: Pack Kni.Platform.iOS.GL
+      run: dotnet pack Platforms/Kni.Platform.iOS.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+    
+    - name: List generated packages
+      run: ls -la NuGetPackages/Output/
+    
+    - name: Upload NuGet packages as artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: nuget-packages-macos
         path: NuGetPackages/Output/*.nupkg
         retention-days: 90
   
-#   release:
-#     needs: build-and-release
-#     runs-on: ubuntu-latest
-#     permissions:
-#       contents: write
+  release:
+    needs: [build-linux, build-macos]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
-#     steps:
-#     - name: Download NuGet packages
-#       uses: actions/download-artifact@v4
-#       with:
-#         name: nuget-packages
-#         path: packages
+    steps:
+    - name: Download Linux NuGet packages
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget-packages-linux
+        path: packages
     
-#     - name: Create GitHub Release
-#       uses: softprops/action-gh-release@v1
-#       with:
-#         tag_name: ${{ inputs.version }}
-#         name: Release ${{ inputs.version }}
-#         draft: false
-#         prerelease: ${{ inputs.prerelease }}
-#         files: packages/*.nupkg
-#         generate_release_notes: true
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Download macOS NuGet packages
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget-packages-macos
+        path: packages
+    
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ inputs.version }}
+        name: Release ${{ inputs.version }}
+        draft: false
+        prerelease: ${{ inputs.prerelease }}
+        files: packages/*.nupkg
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
