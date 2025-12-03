@@ -63,67 +63,67 @@ jobs:
       run: mkdir -p NuGetPackages/Output
     
     - name: Pack Xna.Framework
-      run: dotnet pack src/Xna.Framework/Xna.Framework.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework/Xna.Framework.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.Content
-      run: dotnet pack src/Xna.Framework.Content/Xna.Framework.Content.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Content/Xna.Framework.Content.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.Graphics
-      run: dotnet pack src/Xna.Framework.Graphics/Xna.Framework.Graphics.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Graphics/Xna.Framework.Graphics.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.Audio
-      run: dotnet pack src/Xna.Framework.Audio/Xna.Framework.Audio.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Audio/Xna.Framework.Audio.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.Media
-      run: dotnet pack src/Xna.Framework.Media/XNA.Framework.Media.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Media/XNA.Framework.Media.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.Input
-      run: dotnet pack src/Xna.Framework.Input/Xna.Framework.Input.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Input/Xna.Framework.Input.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.Game
-      run: dotnet pack src/Xna.Framework.Game/Xna.Framework.Game.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Game/Xna.Framework.Game.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.Devices
-      run: dotnet pack src/Xna.Framework.Devices/Xna.Framework.Devices.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Devices/Xna.Framework.Devices.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.Storage
-      run: dotnet pack src/Xna.Framework.Storage/Xna.Framework.Storage.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Storage/Xna.Framework.Storage.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.XR
-      run: dotnet pack src/Xna.Framework.XR/Xna.Framework.XR.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.XR/Xna.Framework.XR.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.Design
-      run: dotnet pack src/Xna.Framework.Design/Xna.Framework.Design.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Design/Xna.Framework.Design.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.Content.Pipeline
-      run: dotnet pack src/Xna.Framework.Content.Pipeline/XNA.Framework.Content.Pipeline.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Content.Pipeline/XNA.Framework.Content.Pipeline.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.Content.Pipeline.Audio
-      run: dotnet pack src/Xna.Framework.Content.Pipeline.Audio/XNA.Framework.Content.Pipeline.Audio.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Content.Pipeline.Audio/XNA.Framework.Content.Pipeline.Audio.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.Content.Pipeline.Graphics
-      run: dotnet pack src/Xna.Framework.Content.Pipeline.Graphics/XNA.Framework.Content.Pipeline.Graphics.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Content.Pipeline.Graphics/XNA.Framework.Content.Pipeline.Graphics.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Xna.Framework.Content.Pipeline.Media
-      run: dotnet pack src/Xna.Framework.Content.Pipeline.Media/XNA.Framework.Content.Pipeline.Media.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack src/Xna.Framework.Content.Pipeline.Media/XNA.Framework.Content.Pipeline.Media.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Kni.Platform.Android.GL
-      run: dotnet pack Platforms/Kni.Platform.Android.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack Platforms/Kni.Platform.Android.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Kni.Platform.SDL2.GL
-      run: dotnet pack Platforms/Kni.Platform.SDL2.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack Platforms/Kni.Platform.SDL2.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Kni.Platform.Blazor.GL
-      run: dotnet pack Kni.Platform.Blazor.GL.sln --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack Kni.Platform.Blazor.GL.sln --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Kni.Platform.Ref
-      run: dotnet pack Platforms/Kni.Platform.Ref.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack Platforms/Kni.Platform.Ref.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Kni.Platform.Oculus.GL
-      run: dotnet pack Platforms/Kni.Platform.Oculus.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack Platforms/Kni.Platform.Oculus.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: Pack Kni.Platform.Cardboard.GL
-      run: dotnet pack Platforms/Kni.Platform.Cardboard.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack Platforms/Kni.Platform.Cardboard.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     # Windows-only packages - cannot build on Linux
     # - name: Pack Kni.Platform.WinForms.DX11
@@ -174,7 +174,7 @@ jobs:
       run: mkdir -p NuGetPackages/Output
     
     - name: Pack Kni.Platform.iOS.GL
-      run: dotnet pack Platforms/Kni.Platform.iOS.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release
+      run: dotnet pack Platforms/Kni.Platform.iOS.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
     
     - name: List generated packages
       run: ls -la NuGetPackages/Output/
