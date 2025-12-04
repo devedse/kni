@@ -201,6 +201,9 @@ jobs:
       with:
         dotnet-version: 8.0.x
     
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+    
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v2
     
@@ -226,7 +229,7 @@ jobs:
       run: dotnet build Tools/MonoGame.Content.Builder/MGCB.csproj -c Release /p:Platform=AnyCPU
     
     - name: Build Kni.Platform.UAP.DX11 for WindowsUniversal nuspec
-      run: dotnet build Platforms/Kni.Platform.UAP.DX11.csproj -c Release /p:Platform=AnyCPU
+      run: msbuild Platforms/Kni.Platform.UAP.DX11.csproj /p:Configuration=Release /p:Platform=AnyCPU /restore
     
     - name: Create output directory
       run: New-Item -ItemType Directory -Force -Path NuGetPackages/Output
