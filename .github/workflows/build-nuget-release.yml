@@ -225,6 +225,9 @@ jobs:
     - name: Build MGCB tool for Content.Pipeline.Builder packages
       run: dotnet build Tools/MonoGame.Content.Builder/MGCB.csproj -c Release /p:Platform=AnyCPU
     
+    - name: Build Kni.Platform.UAP.DX11 for WindowsUniversal nuspec
+      run: dotnet build Platforms/Kni.Platform.UAP.DX11.csproj -c Release /p:Platform=AnyCPU
+    
     - name: Create output directory
       run: New-Item -ItemType Directory -Force -Path NuGetPackages/Output
     
