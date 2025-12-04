@@ -185,9 +185,142 @@ jobs:
         name: nuget-packages-macos
         path: NuGetPackages/Output/*.nupkg
         retention-days: 90
+
+  build-windows:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v2
+    
+    - name: Install workloads for Android
+      run: dotnet workload install android
+    
+    - name: Install workloads for iOS
+      run: dotnet workload install ios
+    
+    - name: Install workloads for Blazor
+      run: dotnet workload install wasm-tools
+    
+    - name: Install Android SDK dependencies for Android.GL
+      run: dotnet build Platforms/Kni.Platform.Android.GL.csproj -t:InstallAndroidDependencies -f net8.0-android -p:AcceptAndroidSDKLicenses=true
+    
+    - name: Install Android SDK dependencies for Oculus.GL
+      run: dotnet build Platforms/Kni.Platform.Oculus.GL.csproj -t:InstallAndroidDependencies -f net8.0-android32.0 -p:AcceptAndroidSDKLicenses=true
+    
+    - name: Install Android SDK dependencies for Cardboard.GL
+      run: dotnet build Platforms/Kni.Platform.Cardboard.GL.csproj -t:InstallAndroidDependencies -f net8.0-android30 -p:AcceptAndroidSDKLicenses=true
+    
+    - name: Build MGCB tool for Content.Pipeline.Builder packages
+      run: dotnet build Tools/MonoGame.Content.Builder/MGCB.csproj -c Release /p:Platform=AnyCPU
+    
+    - name: Create output directory
+      run: New-Item -ItemType Directory -Force -Path NuGetPackages/Output
+    
+    - name: Pack Xna.Framework
+      run: dotnet pack src/Xna.Framework/Xna.Framework.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.Content
+      run: dotnet pack src/Xna.Framework.Content/Xna.Framework.Content.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.Graphics
+      run: dotnet pack src/Xna.Framework.Graphics/Xna.Framework.Graphics.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.Audio
+      run: dotnet pack src/Xna.Framework.Audio/Xna.Framework.Audio.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.Media
+      run: dotnet pack src/Xna.Framework.Media/XNA.Framework.Media.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.Input
+      run: dotnet pack src/Xna.Framework.Input/Xna.Framework.Input.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.Game
+      run: dotnet pack src/Xna.Framework.Game/Xna.Framework.Game.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.Devices
+      run: dotnet pack src/Xna.Framework.Devices/Xna.Framework.Devices.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.Storage
+      run: dotnet pack src/Xna.Framework.Storage/Xna.Framework.Storage.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.XR
+      run: dotnet pack src/Xna.Framework.XR/Xna.Framework.XR.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.Design
+      run: dotnet pack src/Xna.Framework.Design/Xna.Framework.Design.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.Content.Pipeline
+      run: dotnet pack src/Xna.Framework.Content.Pipeline/XNA.Framework.Content.Pipeline.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.Content.Pipeline.Audio
+      run: dotnet pack src/Xna.Framework.Content.Pipeline.Audio/XNA.Framework.Content.Pipeline.Audio.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.Content.Pipeline.Graphics
+      run: dotnet pack src/Xna.Framework.Content.Pipeline.Graphics/XNA.Framework.Content.Pipeline.Graphics.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Xna.Framework.Content.Pipeline.Media
+      run: dotnet pack src/Xna.Framework.Content.Pipeline.Media/XNA.Framework.Content.Pipeline.Media.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Kni.Platform.Android.GL
+      run: dotnet pack Platforms/Kni.Platform.Android.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Kni.Platform.iOS.GL
+      run: dotnet pack Platforms/Kni.Platform.iOS.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Kni.Platform.SDL2.GL
+      run: dotnet pack Platforms/Kni.Platform.SDL2.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Kni.Platform.Blazor.GL
+      run: dotnet pack Kni.Platform.Blazor.GL.sln --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Kni.Platform.Ref
+      run: dotnet pack Platforms/Kni.Platform.Ref.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Kni.Platform.Oculus.GL
+      run: dotnet pack Platforms/Kni.Platform.Oculus.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Kni.Platform.Cardboard.GL
+      run: dotnet pack Platforms/Kni.Platform.Cardboard.GL.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Kni.Platform.WinForms.DX11
+      run: dotnet pack Platforms/Kni.Platform.WinForms.DX11.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Kni.Platform.WinForms.DX11.OculusOVR
+      run: dotnet pack Platforms/Kni.Platform.WinForms.DX11.OculusOVR.csproj --output NuGetPackages/Output/ /t:Build /p:Configuration=Release /p:Version=${{ inputs.version }}
+    
+    - name: Pack Content.Pipeline.Builder
+      run: nuget pack NuGetPackages/Content.Pipeline.Builder.nuspec -OutputDirectory NuGetPackages/Output/ -BasePath . -Version ${{ inputs.version }} -Properties Configuration=Release
+    
+    - name: Pack Content.Pipeline.Builder.Windows
+      run: nuget pack NuGetPackages/Content.Pipeline.Builder.Windows.nuspec -OutputDirectory NuGetPackages/Output/ -BasePath . -Version ${{ inputs.version }} -Properties Configuration=Release
+    
+    - name: Pack MonoGame.Framework.WindowsUniversal
+      run: nuget pack NuGetPackages/MonoGame.Framework.WindowsUniversal.nuspec -OutputDirectory NuGetPackages/Output/ -BasePath . -Version ${{ inputs.version }} -Properties Configuration=Release
+    
+    - name: List generated packages
+      run: Get-ChildItem -Path NuGetPackages/Output/ -Recurse
+    
+    - name: Upload NuGet packages as artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: nuget-packages-windows
+        path: NuGetPackages/Output/*.nupkg
+        retention-days: 90
   
 #   release:
-#     needs: [build-linux, build-macos]
+#     needs: [build-linux, build-macos, build-windows]
 #     runs-on: ubuntu-latest
 #     permissions:
 #       contents: write
@@ -203,6 +336,12 @@ jobs:
 #       uses: actions/download-artifact@v4
 #       with:
 #         name: nuget-packages-macos
+#         path: packages
+    
+#     - name: Download Windows NuGet packages
+#       uses: actions/download-artifact@v4
+#       with:
+#         name: nuget-packages-windows
 #         path: packages
     
 #     - name: Create GitHub Release
