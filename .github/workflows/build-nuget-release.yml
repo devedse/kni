@@ -228,8 +228,8 @@ jobs:
     - name: Build MGCB tool for Content.Pipeline.Builder packages
       run: dotnet build Tools/MonoGame.Content.Builder/MGCB.csproj -c Release /p:Platform=AnyCPU
     
-    - name: Build Kni.Platform.UAP.DX11 for WindowsUniversal nuspec
-      run: msbuild Platforms/Kni.Platform.UAP.DX11.csproj /p:Configuration=Release /p:Platform=AnyCPU /restore
+    # Note: UAP build is skipped as it requires Windows Mobile SDK extensions that may not be available on GitHub Actions
+    # The MonoGame.Framework.WindowsUniversal nuspec package requires manual UAP build locally
     
     - name: Create output directory
       run: New-Item -ItemType Directory -Force -Path NuGetPackages/Output
@@ -312,8 +312,7 @@ jobs:
     - name: Pack Content.Pipeline.Builder.Windows
       run: nuget pack NuGetPackages/Content.Pipeline.Builder.Windows.nuspec -OutputDirectory NuGetPackages/Output/ -BasePath . -Version ${{ inputs.version }} -Properties Configuration=Release
     
-    - name: Pack MonoGame.Framework.WindowsUniversal
-      run: nuget pack NuGetPackages/MonoGame.Framework.WindowsUniversal.nuspec -OutputDirectory NuGetPackages/Output/ -BasePath . -Version ${{ inputs.version }} -Properties Configuration=Release
+    # Note: MonoGame.Framework.WindowsUniversal nuspec is skipped as it requires UAP build (see note above)
     
     - name: List generated packages
       run: Get-ChildItem -Path NuGetPackages/Output/ -Recurse
